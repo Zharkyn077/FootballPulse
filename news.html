@@ -1,62 +1,413 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FootballPulse – News</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Figtree:wght@400;600;700&display=swap"
-        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .highlights-section {
+            background: #ffffff;
+            border: 1px solid #d5dde4;
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 40px;
+        }
+
+        .highlights-section h2 {
+            font-weight: 800;
+        }
+
+        .highlight-player {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #0b1f33;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .highlight-player img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .highlight-play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #e4322b;
+            color: #ffffff;
+            border-radius: 12px;
+            padding: 12px 25px;
+            font-size: 25px;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .highlight-play:hover {
+            background: #b8231d;
+            color: #ffffff;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            background: #f8fafc;
+            border: 2px solid #d5dde4;
+            border-radius: 8px;
+            color: #0b1f33;
+            text-align: left;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .highlight-item:hover {
+            background: #eef2f5;
+            border-color: #1f8a4c;
+        }
+
+        .highlight-item.active {
+            background: #e8f5ed;
+            border-color: #1f8a4c;
+        }
+
+        .highlight-item img {
+            width: 110px;
+            max-width: 40%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .highlight-item strong {
+            display: block;
+            font-size: 14px;
+        }
+
+        .highlight-item small {
+            color: #52657a;
+        }
+
+        .highlight-player a:focus-visible,
+        .highlight-item:focus-visible {
+            outline: 3px solid #1f8a4c;
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 576px) {
+            .highlights-section {
+                padding: 15px;
+            }
+
+            .highlight-item img {
+                width: 90px;
+            }
+        }
+    </style>
 </head>
 
 <body data-page="news">
+
     <main class="container">
+
         <div class="page-head">
             <h1>News</h1>
-            <p class="meta">Verified football stories from Premier League, UEFA and FIFA. Search and save stories; open
-                the original reporting.</p>
+            <p class="meta">
+                Football news, match highlights and stories
+                from Premier League, UEFA and FIFA.
+            </p>
         </div>
-        <section class="mb-5">
-            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+
+        <section class="highlights-section">
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
                 <div>
-                    <h2>Match highlights <span class="tag">7 NOV 2026</span></h2>
-                    <p class="meta">Real match footage from Sky Sports. Playback depends on broadcaster embedding and
-                        regional rights.</p>
+                    <h2>Football Highlights</h2>
+                    <p class="meta">
+                        Watch football videos and explore recommendations.
+                    </p>
                 </div>
+
+                <span class="tag">VIDEO HUB</span>
             </div>
-            <div class="row g-3">
+
+            <div class="row g-3 mb-4">
+
+                <div class="col-md-7">
+                    <label for="videoSearch" class="form-label fw-bold">
+                        Search videos
+                    </label>
+
+                    <input
+                        type="search"
+                        id="videoSearch"
+                        class="form-control"
+                        placeholder="Search videos"
+                    >
+                </div>
+
+                <div class="col-md-5">
+                    <label for="videoCompetition" class="form-label fw-bold">
+                        Competition
+                    </label>
+
+                    <select id="videoCompetition" class="form-select">
+                        <option value="all">All competitions</option>
+                        <option value="Premier League">Premier League</option>
+                        <option value="Champions League">Champions League</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="row g-4">
+
                 <div class="col-lg-8">
-                    <div class="video-wrap"><iframe id="highlightPlayer" title="Premier League match highlights"
-                            loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
-                            allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
-                    </div>
-                    <h3 class="h5 mt-3" id="highlightTitle"></h3>
-                    <p class="meta">If the broadcaster blocks embedded playback, <a id="highlightLink" target="_blank"
-                            rel="noopener noreferrer">watch the original video</a>.</p>
+
+                    <div id="videoPlayer" class="highlight-player"></div>
+
+                    <h3 id="videoTitle" class="h5 mt-3"></h3>
+
+                    <p id="videoChannel" class="meta"></p>
+
+                    <a
+                        id="videoLink"
+                        class="btn btn-fp"
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Watch on YouTube
+                    </a>
+
                 </div>
+
                 <div class="col-lg-4">
-                    <h3 class="h5">Recommended next</h3>
-                    <div id="highlightRecommendations" class="d-grid gap-2"></div>
+
+                    <h3 class="h5 mb-3">Recommended next</h3>
+
+                    <div id="videoRecommendations"></div>
+
                 </div>
+
             </div>
-        </section><label for="q" class="form-label fw-bold">Search</label><input id="q" class="form-control mb-3"
-            type="search" placeholder="Try “pressing” or “striker”">
-        <div id="cats" class="mb-2" role="group" aria-label="Filter by category"></div>
-        <p class="meta" aria-live="polite"><span id="count"></span> · <strong id="savedN"></strong></p>
-        <div id="list"></div>
+
+        </section>
+
+        <section class="mb-5">
+
+            <h2>Latest Football News</h2>
+
+            <label for="q" class="form-label fw-bold">
+                Search articles
+            </label>
+
+            <input
+                id="q"
+                class="form-control mb-3"
+                type="search"
+                placeholder="Search football news"
+            >
+
+            <div
+                id="cats"
+                class="mb-2"
+                role="group"
+                aria-label="Filter by category"
+            ></div>
+
+            <p class="meta" aria-live="polite">
+                <span id="count"></span>
+                ·
+                <strong id="savedN"></strong>
+            </p>
+
+            <div id="list"></div>
+
+        </section>
+
     </main>
+
+    <footer class="container py-3">
+        <small class="meta">
+            FootballPulse © 2026 |
+            Football news and statistics
+        </small>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="js/data.js"></script>
     <script src="js/layout.js"></script>
     <script src="js/news.js"></script>
-    <script src="js/highlights.js"></script>
-    <footer class="container py-3"><small class="meta">Data: Premier League / UEFA / FIFA (see <a
-                href="DATA_SOURCES.md">sources</a>). Demo features are simulations. See project credits in the
-            report.</small></footer>
+
+    <script>
+        $(function () {
+
+            const videos = [
+                {
+                    id: "MN_C4PztXlY",
+                    title: "Premier League — Every Weekend Goal",
+                    competition: "Premier League",
+                    channel: "Premier League"
+                },
+                {
+                    id: "DLOUfAVwuXA",
+                    title: "Champions League — Every Goal",
+                    competition: "Champions League",
+                    channel: "UEFA"
+                }
+            ];
+
+            let activeIndex = 0;
+
+            function renderVideo() {
+                const video = videos[activeIndex];
+
+                const youtubeUrl =
+                    "https://www.youtube.com/watch?v=" + video.id;
+
+                const thumbnailUrl =
+                    "https://img.youtube.com/vi/" +
+                    video.id +
+                    "/hqdefault.jpg";
+
+                $("#videoTitle").text(video.title);
+                $("#videoChannel").text(video.channel);
+                $("#videoLink").attr("href", youtubeUrl);
+
+                const image = $("<img>", {
+                    src: thumbnailUrl,
+                    alt: video.title
+                });
+
+                const playButton = $("<a>", {
+                    href: youtubeUrl,
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                    class: "highlight-play",
+                    text: "▶",
+                    "aria-label": "Watch " + video.title
+                });
+
+                $("#videoPlayer")
+                    .empty()
+                    .append(image, playButton);
+
+                renderRecommendations();
+            }
+
+            function renderRecommendations() {
+                const search = $("#videoSearch")
+                    .val()
+                    .toLowerCase()
+                    .trim();
+
+                const competition = $("#videoCompetition").val();
+
+                const filtered = videos
+                    .map(function (video, index) {
+                        return { video, index };
+                    })
+                    .filter(function (item) {
+                        const video = item.video;
+
+                        const matchesSearch =
+                            video.title.toLowerCase().includes(search) ||
+                            video.channel.toLowerCase().includes(search);
+
+                        const matchesCompetition =
+                            competition === "all" ||
+                            video.competition === competition;
+
+                        return matchesSearch && matchesCompetition;
+                    });
+
+                const container = $("#videoRecommendations");
+
+                container.stop(true, true).empty();
+
+                if (filtered.length === 0) {
+                    container.append(
+                        $("<p>", {
+                            class: "meta",
+                            text: "No videos found."
+                        })
+                    );
+
+                    return;
+                }
+
+                filtered.forEach(function (item) {
+                    const video = item.video;
+                    const index = item.index;
+
+                    const button = $("<button>", {
+                        type: "button",
+                        class: "highlight-item"
+                    });
+
+                    if (index === activeIndex) {
+                        button.addClass("active");
+                    }
+
+                    const image = $("<img>", {
+                        src: "https://img.youtube.com/vi/" +
+                            video.id +
+                            "/mqdefault.jpg",
+                        alt: "",
+                        loading: "lazy"
+                    });
+
+                    const details = $("<span>");
+
+                    const name = $("<strong>").text(video.title);
+                    const channel = $("<small>").text(video.channel);
+
+                    details.append(name, channel);
+                    button.append(image, details);
+
+                    button.on("click", function () {
+                        activeIndex = index;
+                        renderVideo();
+                    });
+
+                    container.append(button);
+                });
+
+                container.hide().fadeIn(200);
+            }
+
+            $("#videoSearch").on("input", function () {
+                renderRecommendations();
+            });
+
+            $("#videoCompetition").on("change", function () {
+                renderRecommendations();
+            });
+
+            renderVideo();
+
+        });
+    </script>
+
 </body>
 
 </html>
