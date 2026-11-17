@@ -21,4 +21,4 @@ Theme, followed club, favourite articles, watchlist, bookings and route preferen
 
 ## Credits
 
-Source links and data dates: [DATA_SOURCES.md](DATA_SOURCES.md). Player image licences: [IMAGE_CREDITS.md](IMAGE_CREDITS.md). The [About page](about.html#credits) credits the libraries, fonts, sources, inspirations and AI assistance used for the site. The academic report should also include these credits, team contributions, Endterm changes, screenshots and the live site link.
+Source links and data dates: [DATA_SOURCES.md](DATA_SOURCES.md). Player image licences: [IMAGE_CREDITS.md](IMAGE_CREDITS.md). The [About page](about.html#credits) credits the libraries, fonts, sources and inspirations used for the site. The academic report should also include team contributions, Endterm changes, screenshots and the live site link.
