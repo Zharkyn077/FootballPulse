@@ -16,25 +16,23 @@
     <main class="container">
         <div class="page-head">
             <h1>League table</h1>
-            <p class="meta">2026/27 standings snapshot (7 November 2026; teams have played 9–10 matches). Source: <a
-                    href="https://www.premierleague.com/en/tables/premier-league/2026-27" target="_blank"
-                    rel="noopener noreferrer">Premier League</a>. Tap a heading to re-sort. Green edge: top four. Red
-                edge: going down. <span id="avg"></span></p>
+            <p class="meta">2026/27 standings snapshot, checked 16 November 2026 after matchweek 10. <a href="https://www.premierleaguefixtures.net/table" target="_blank" rel="noopener noreferrer">Data source ↗</a> · <a href="https://www.premierleague.com/en/tables/premier-league/2026-27" target="_blank" rel="noopener noreferrer">Official live table ↗</a>. Sort by a heading. Green marks the top four; red marks the relegation zone. <span id="avg"></span></p>
         </div>
         <label for="q" class="form-label fw-bold">Find a club</label><input id="q" class="form-control mb-3"
             type="search">
         <div class="table-responsive">
             <table class="table table-fp table-hover text-center align-middle">
-                <caption class="visually-hidden">Premier League 2026/27 standings snapshot</caption>
+                <caption class="visually-hidden">Premier League 2026/27 standings after matchweek 10, checked 16 November 2026</caption>
                 <thead id="thead"></thead>
                 <tbody id="tbody"></tbody>
             </table>
         </div>
+        <section class="club-comparison mt-4" aria-labelledby="compareTitle"><div class="section-heading"><div><span class="eyebrow">CLUB VS CLUB</span><h2 id="compareTitle" class="h3">Compare the contenders</h2><p class="meta mb-0">A quick side-by-side from the same dated table snapshot.</p></div><span class="tag">MATCHWEEK 10</span></div><div class="row g-3 mt-1"><div class="col-md-6"><label for="compareA" class="form-label fw-bold">First club</label><select id="compareA" class="form-select"></select></div><div class="col-md-6"><label for="compareB" class="form-label fw-bold">Second club</label><select id="compareB" class="form-select"></select></div></div><div id="comparisonResult" class="mt-4" aria-live="polite"></div></section>
         <section class="mt-5">
             <div class="d-flex justify-content-between flex-wrap gap-2 align-items-center">
                 <div>
                     <h2>Player intelligence</h2>
-                    <p class="meta">Official Premier League Golden Boot and Playmaker snapshots · 3 November 2026. A
+                    <p class="meta">Premier League Golden Boot and Playmaker snapshots · 3 November 2026. A
                         dash means not verified, not zero.</p>
                 </div>
                 <div class="d-flex gap-2"><button class="btn btn-fp" id="goalBtn">Goals</button><button
@@ -54,9 +52,6 @@
     <script src="js/data.js"></script>
     <script src="js/layout.js"></script>
     <script src="js/stats.js"></script>
-    <footer class="container py-3"><small class="meta">Data: Premier League / UEFA / FIFA (see <a
-                href="DATA_SOURCES.md">sources</a>). Demo features are simulations. See project credits in the
-            report.</small></footer>
 </body>
 
 </html>

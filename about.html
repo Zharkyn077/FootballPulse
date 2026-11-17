@@ -48,21 +48,23 @@
                 </div>
             </div>
         </div>
+        <section class="route-finder mt-5" aria-labelledby="routeTitle"><span class="eyebrow">MAKE IT YOUR MATCHDAY</span><h2 id="routeTitle">Where should you start?</h2><p class="meta">Choose what you came for and get a quick route through the site.</p><div class="route-buttons" role="group" aria-label="Choose a site route"><button class="route-choice" type="button" data-route="catchup">⚡ Catch up</button><button class="route-choice" type="button" data-route="stats">▥ Explore stats</button><button class="route-choice" type="button" data-route="plan">◷ Plan a matchday</button></div><div id="routeResult" class="route-result" aria-live="polite"></div></section>
+        <section class="mt-5" aria-labelledby="siteKeyTitle"><div class="section-heading"><div><span class="eyebrow">READ THE SIGNAL</span><h2 id="siteKeyTitle" class="h3">What's real, saved and simulated?</h2></div></div><div class="row g-3"><div class="col-md-4"><div class="site-key-card"><span class="site-key-icon">✓</span><h3 class="h5">Sourced snapshot</h3><p class="meta mb-0">League and player figures show a published date and link to their sources. They do not update live.</p></div></div><div class="col-md-4"><div class="site-key-card"><span class="site-key-icon">★</span><h3 class="h5">Yours to keep</h3><p class="meta mb-0">Favourite stories, watched matches and demo bookings stay in this browser using localStorage.</p></div></div><div class="col-md-4"><div class="site-key-card"><span class="site-key-icon">◎</span><h3 class="h5">Just for play</h3><p class="meta mb-0">The scoreboard, match planner and ticket checkout are educational simulations.</p></div></div></div></section>
         <section id="credits" class="mt-5">
             <h2 class="h4">Credits</h2>
             <p>Bootstrap 5 and jQuery 3.7 (CDN). Fonts: Bricolage Grotesque and Figtree from Google Fonts. League and
-                player statistics are sourced from the Premier League and a dated standings snapshot. Fixtures and
-                ticket checkout are simulations. Development tools and third-party code must be credited in the
-                submitted report.</p>
+                player statistics are sourced from the Premier League and a dated standings snapshot. Player photos
+                are from Wikimedia Commons; each player card links to its image source. Morgan Rogers: Bryan Berlin / WikiPortraits, CC BY-SA 4.0.
+                Nicolas Jackson: Timmy96, CC0. Team circles are original text marks. Fixtures and ticket checkout are simulations.
+                <a href="DATA_SOURCES.md">Data sources</a> and <a href="IMAGE_CREDITS.md">image credits</a> are included in the project.
+                The club comparison and calendar export were inspired by the <a href="https://www.premierleague.com/en/stats/head-to-head" target="_blank" rel="noopener noreferrer">Premier League comparison tool</a> and its <a href="https://www.premierleague.com/en/news/1235133" target="_blank" rel="noopener noreferrer">fixture calendar feature</a>; our implementation uses the local demo data. Development tools and third-party code must also be credited in the submitted report.</p>
         </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/data.js"></script>
     <script src="js/layout.js"></script>
-    <footer class="container py-3"><small class="meta">Data: Premier League / UEFA / FIFA (see <a
-                href="DATA_SOURCES.md">sources</a>). Demo features are simulations. See project credits in the
-            report.</small></footer>
+    <script src="js/about.js"></script>
 </body>
 
 </html>

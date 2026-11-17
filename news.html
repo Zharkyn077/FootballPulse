@@ -209,6 +209,14 @@
 
         </section>
 
+        <section class="favorites-section mb-5" id="favoritesSection" aria-labelledby="favoritesTitle">
+            <div class="section-heading">
+                <div><span class="eyebrow">YOUR READING LIST</span><h2 id="favoritesTitle">Favourite articles <span id="favoritesCount" class="count-pill">0</span></h2><p class="meta mb-0">Star an article below and find it here whenever you return.</p></div>
+                <button id="clearFavorites" class="btn btn-line btn-sm" type="button">Clear favourites</button>
+            </div>
+            <div id="favoritesList" class="row g-3" aria-live="polite"></div>
+        </section>
+
         <section class="mb-5">
 
             <h2>Latest Football News</h2>
@@ -242,13 +250,6 @@
         </section>
 
     </main>
-
-    <footer class="container py-3">
-        <small class="meta">
-            FootballPulse © 2026 |
-            Football news and statistics
-        </small>
-    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 

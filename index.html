@@ -57,6 +57,12 @@
                 <div class="col-md-8" id="clubInfo"></div>
             </div>
         </section>
+        <section class="pulse-lab mb-5" aria-labelledby="pulseLabTitle">
+            <div class="pulse-lab-head"><div><span class="eyebrow">MATCHDAY LAB · HYPOTHETICAL</span><h2 id="pulseLabTitle">One result. A new picture.</h2><p class="mb-0">Pick a possible result for your club's next league match and see how the table could move.</p></div><div class="pulse-lab-ball" aria-hidden="true">⚽</div></div>
+            <div class="pulse-lab-body"><div><p class="meta mb-1">Following</p><h3 id="labClub" class="h4 mb-3">Arsenal</h3><div class="result-picks" role="group" aria-label="Hypothetical match result"><button class="result-pick" type="button" data-result="W">Win <strong>+3</strong></button><button class="result-pick" type="button" data-result="D">Draw <strong>+1</strong></button><button class="result-pick" type="button" data-result="L">Loss <strong>+0</strong></button></div></div><div class="lab-outcome" aria-live="polite"><div class="lab-metrics"><div><small>PROJECTED POINTS</small><strong id="labPoints">—</strong></div><div><small>PROJECTED PLACE</small><strong id="labRank">—</strong></div></div><p id="labInsight" class="mb-0"></p></div></div>
+            <p class="lab-note mb-0">Simulation using the dated league snapshot; all other clubs' points stay the same. <a href="stats.html">Explore the real table ↗</a></p>
+        </section>
+        <section class="mb-5" aria-labelledby="savedTitle"><div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3"><div><h2 class="h4 mb-1" id="savedTitle">Your matchday shortlist</h2><p class="meta mb-0">Saved stories, watched demo fixtures and bookings stay here after a reload.</p></div><button id="clearShortlist" class="btn btn-line btn-sm" type="button">Clear saved stories</button></div><div id="shortlist" class="row g-3"></div></section>
         <h2 class="mb-4">Jump in</h2>
         <div class="row g-4">
             <div class="col-12 col-md-6 col-lg-4"><a href="news.html" class="fp-card text-decoration-none text-reset">
@@ -65,7 +71,7 @@
                 </a></div>
             <div class="col-12 col-md-6 col-lg-4"><a href="stats.html" class="fp-card text-decoration-none text-reset">
                     <h3 class="h5">The table, your way</h3>
-                    <p>Sort by goals, form or points and see who’s running hot.</p>
+                    <p>Sort the latest league snapshot and meet the leading scorers and creators.</p>
                 </a></div>
             <div class="col-12 col-lg-4"><a href="tickets.html" class="fp-card text-decoration-none text-reset">
                     <h3 class="h5">Try a demo booking</h3>
@@ -116,9 +122,6 @@
     <script src="js/data.js"></script>
     <script src="js/layout.js"></script>
     <script src="js/home.js"></script>
-    <footer class="container py-3"><small class="meta">Data: Premier League / UEFA / FIFA (see <a
-                href="DATA_SOURCES.md">sources</a>). Demo features are simulations. See project credits in the
-            report.</small></footer>
 </body>
 
 </html>

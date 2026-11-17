@@ -18,9 +18,10 @@
             <h1>Fixtures</h1>
             <p class="meta">DEMO schedule: these fixtures and prices are fictional and not real-world availability.</p>
         </div>
-        <div class="countdown" id="cd" aria-live="off"></div><label for="comp"
-            class="form-label fw-bold">Competition</label><select id="comp" class="form-select mb-3"></select>
+        <div class="countdown" id="cd" aria-live="off"></div>
+        <section class="fixture-planner mb-4" aria-labelledby="plannerTitle"><div class="section-heading mb-3"><div><span class="eyebrow">YOUR MATCHDAY PLANNER</span><h2 id="plannerTitle" class="h3">Find a fixture worth watching</h2><p class="meta mb-0">Filter the demo schedule, save matches and export a calendar reminder.</p></div><span id="watchCount" class="count-pill">0 saved</span></div><div class="row g-3 align-items-end"><div class="col-md-5"><label for="teamSearch" class="form-label fw-bold">Search a team</label><input id="teamSearch" type="search" class="form-control" placeholder="Arsenal, Barcelona…"></div><div class="col-md-4"><label for="comp" class="form-label fw-bold">Competition</label><select id="comp" class="form-select"></select></div><div class="col-md-3"><div class="form-check planner-check"><input id="myClubOnly" class="form-check-input" type="checkbox"><label for="myClubOnly" class="form-check-label">Only my club</label></div></div></div><p id="fixtureCount" class="meta mt-3 mb-0" role="status"></p></section>
         <div id="fx"></div>
+        <section class="mt-5" aria-labelledby="watchlistTitle"><div class="section-heading"><div><span class="eyebrow">SAVED IN THIS BROWSER</span><h2 id="watchlistTitle" class="h3">My watchlist</h2></div><button id="clearWatchlist" class="btn btn-line btn-sm" type="button">Clear watchlist</button></div><div id="watchlist" class="row g-3"></div></section>
         <section class="mt-5">
             <h2>Verified results · 7 November 2026</h2>
             <div class="row g-3">
@@ -46,9 +47,6 @@
     <script src="js/data.js"></script>
     <script src="js/layout.js"></script>
     <script src="js/matches.js"></script>
-    <footer class="container py-3"><small class="meta">Data: Premier League / UEFA / FIFA (see <a
-                href="DATA_SOURCES.md">sources</a>). Demo features are simulations. See project credits in the
-            report.</small></footer>
 </body>
 
 </html>
